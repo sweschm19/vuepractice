@@ -1,6 +1,6 @@
 <template>
 <div>
-<p>Good({{ number }})</p>
+<p>Good({{ halfNum }})</p>
 <button @click="increment">+1</button>
 </div>
   
@@ -8,14 +8,15 @@
 
 <script>
 export default {
-  data() {
-    return {
-      number: 10
-    };
+  props: ["number","testProps"],
+  computed: {
+    halfNum(){
+      return this.number / 2;
+    }
   },
   methods: {
     increment() {
-      this.number += 1;
+      this.$emit("my-click", this.number + 3); //(x,second hikisuu) child methods,second hikisuu
     }
   }
 };
