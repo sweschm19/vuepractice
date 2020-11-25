@@ -7,7 +7,7 @@
   <keep-alive>
     <component :is="currentComponent"></component>
   </keep-alive>
-  <div>
+  <div style="padding: 10rem;">
    <h2>イベントのフォーム</h2>
    <label for="title">入力内容</label>
    <input id="title" type="text" 
@@ -26,6 +26,32 @@
    v-model="eventData.details">
    </textarea>
    <pre>{{eventData.details}}</pre>
+   <input type="checkbox" id="isPrivate" v-model="eventData.isPrivate">
+   <label for="isPrivate">Private</label>
+   <p>{{eventData.isPrivate}}</p>
+   <p>参加条件</p>
+   <input type="checkbox" id="10" value="10代" v-model="eventData.target">
+  <lable for="10">10代</lable>
+
+  <input type="checkbox" id="20" value="20代" v-model="eventData.target">
+  <lable for="20">20代</lable>
+
+  <input type="checkbox" id="30" value="30代" v-model="eventData.target">
+  <lable for="30">30代</lable>
+
+  <input type="checkbox" id="40" value="40代" v-model="eventData.target">
+  <lable for="40">40代</lable>
+  <p>参加費</p>
+  <input type="radio" id="free" value="無料" v-model="eventData.price">
+  <label for="free">無料</label>
+  <input type="radio" id="paid" value="有料" v-model="eventData.price">
+  <label for="paid">有料</label>
+  <p>開催場所</p>
+  <select v-model="eventData.location">
+    <option v-for="location in locations"
+    :key="location">{{location}}</option>
+  </select>
+  <label>{{ eventData.location}}</label>
   </div>
 </div>
   
@@ -41,11 +67,15 @@ export default {
     return {
       number: 10,
       currentComponent: "Home",
+      locations:["Tokyo","Osaka","Kobe"],
       eventData: {
         title:"入力内容",
         maxNumber: 0,
         host:" ",
-        details:""
+        details:"",
+        isPrivate: false,
+        target: [],
+        price: "無料"
           
       }
     };
@@ -61,3 +91,4 @@ export default {
     }
   }
 }
+</script>
