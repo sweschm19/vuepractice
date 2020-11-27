@@ -9,10 +9,10 @@
   </keep-alive>
   <div style="padding: 10rem;">
    <h2>イベントのフォーム</h2>
-   <label for="title">入力内容</label>
-   <input id="title" type="text" 
-   v-model.number="eventData.title"> 
-   <pre>{{eventData.title}}</pre>
+   <EventTitle v-model="eventData.title"></EventTitle>
+   <EventTitle
+   :value="eventData.title"
+   @input="eventData.title = $event"></EventTitle>
    <label for="maxNumber">最大人数</label>
    <input id="maxNumber" type="number" 
       v-model.number="eventData.maxNumber"> //event(object)
